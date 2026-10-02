@@ -1,5 +1,8 @@
-html
+doctype html
+html(lang="en")
   head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
     title aw-watcher-input visualization
     style
       | :root {
@@ -15,21 +18,22 @@ html
       | th { text-align: left; }
       | body { font-family: sans-serif; background: var(--bg); color: var(--text); }
       | #status { color: var(--status); }
+      | body { margin: 4px; font-size: 12px; }
+      | #chart-container { position: relative; height: calc(100vh - 42px); max-height: 240px; }
+      | #status { margin: 0 0 4px; }
+      | #status:empty { display: none; }
+      | table { margin-top: 4px; width: 100%; border-collapse: collapse; line-height: 14px; }
+      | th, td { padding: 0; }
+      | td { text-align: right; }
   body
-    p#status
-
-    table
+    p#status(role="status") Loading input activity…
+    div#chart-container
+      canvas#input-chart(role="img" aria-label="Keyboard presses and mouse clicks per time interval")
+    table(aria-label="Input totals for the selected range")
       tr
-        th Keyboard
+        th(scope="row") Presses
+        td#presses —
       tr
-        td Presses
-        td#presses
-      tr
-        td &nbsp;
-      tr
-        th Mouse
-      tr
-        td Clicks
-        td#clicks
-
+        th(scope="row") Clicks
+        td#clicks —
     script(src="bundle.js")
