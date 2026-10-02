@@ -10,7 +10,7 @@ clean:
 
 dist/bundle.js: src/index.js src/aggregate.js package-lock.json
 	mkdir -p dist
-	./node_modules/.bin/browserify src/index.js -o $@
+	npx browserify src/index.js -o $@
 
 dist/index.html: src/index.pug
 	mkdir -p dist
